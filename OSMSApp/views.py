@@ -154,6 +154,13 @@ def user_logout(request):
     logout(request)
     return HttpResponseRedirect('/')
 
+from django.shortcuts import render, get_object_or_404
+from .models import Dish
+
+def dish_detail(request, id):
+    dish = get_object_or_404(Dish, id=id)
+    return render(request, 'dish_detail.html', {'dish': dish})
+
 """def single_dish(request, id):
     context={}
     dish = get_object_or_404(Dish, id=id)
